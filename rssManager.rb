@@ -3,37 +3,45 @@ require 'nokogiri'
 require_relative 'rssData.rb'
 
 class RssManager
-  def loadRssChannelFromUrl(rssUrl)
+  def load_rss_channel_from_url(rss_url)
     # Read RSS from URL
-    xmlDoc = Nokogiri::XML(open(rssUrl))
+    xmlDoc = Nokogiri::XML(URI.open(rss_url))
 
     # Get/set RSS channel node
     rssChannelNode = xmlDoc.root.at_xpath('channel')
 
     # Create new RSS channel
     rssChannel = RssChannel.new
-    rssChannel.Title = xmlDoc.root.at_xpath('channel/title').content
-    rssChannel.Description = rssChannelNode.at_xpath('description').content
-    rssChannel.Link = rssChannelNode.at_xpath('link').content
-    rssChannel.PubDate = rssChannelNode.at_xpath('pubDate').content
-    rssChannel.RssItems = loadRssItemsFromUrl(rssUrl)
+    rssChannel.title = xmlDoc.root.at_xpath('channel/title').content
+    rssChannel.description = rssChannelNode.at_xpath('description').content
+    rssChannel.link = rssChannelNode.at_xpath('link').content
+    rssChannel.pubDate = rssChannelNode.at_xpath('pubDate').content
+    rssChannel.rssItems = load_rss_items_from_url(rss_url)
 
     return rssChannel
   end
-end
 
-def loadRssItemsFromUrl(rssUrl)
-  # Read RSS from URL
-  xmlDoc = Nokogiri::XML(open(rssUrl))
+  def load_rss_items_from_url(rss_url)
+    # Read RSS from URL
+    xmlDoc = Nokogiri::XML(URI.open(rss_url))
 
-  # Get XML Nodes
-  rssItemNodes = xmlDoc.root.at_xpath('channel/item')
+    # Get XML Nodes
+    rssItemNodes = xmlDoc.root.at_xpath('channel/item')
 
-  # Store RSSitems temporarily
-  rssItems = []
+    # Store RSSitems temporarily
+    rssItems = []
 
-  for index in 0..rssItemNodes.length - 1 do
-    # Create new RSSItem
-    rssItem = RssItem.new
+    rssItemNodes.each do |elem|
+      # Create new RSSItem
+      rssItem = RssItem.new
+      rssItem.title = elem.at_xpath('title').content
+      rssItem.description = elem.at_xpath('description').content
+      rssItem.link = elem.at_xpath('link').content
+      rssItem.guid = elem.at_xpath('guid').content
+      rssItem.pubDate = elem.at_xpath('pubDate').content
+      rssItems.push(rssItem)
+    end
+
+    return rssItems
   end
 end

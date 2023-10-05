@@ -1,87 +1,86 @@
 # Create data models
 
 class RssChannel
-  # Title
-  def Title=(t)
-    @Title = t
+  # title
+  def title=(t)
+    @title = t
   end
-  def Title
-    @Title
-  end
-
-  # Description
-  def Description=(t)
-    @Description = t
-  end
-  def Description
-    @Description
+  def title
+    @title
   end
 
-  # Link
-  def Link=(t)
-    @Link = t
+  # description
+  def description=(t)
+    @description = t
   end
-  def Link
-    @Link
+  def description
+    @description
   end
 
-  # PubDate
-  def PubDate=(t)
-    @PubDate = t
+  # link
+  def link=(t)
+    @link = t
   end
-  def PubDate
-    @PubDate
+  def link
+    @link
+  end
+
+  # pubDate
+  def pubDate=(t)
+    @pubDate = t
+  end
+  def pubDate
+    @pubDate
   end
 
   # RSSItems
-  def RSSItems=(t)
-    @RSSItems = t
+  def rssItems=(t)
+    @rssItems = t
   end
-  def RSSItems
-    @RSSItems
+  def rssItems
+    @rssItems
   end
 end
 
 class RSSItems
-  # Title
-  def Title=(t)
-    @Title = t
+  # title
+  def title=(t)
+    @title = t
   end
-  def Title
-    @Title
-  end
-
-  # Description
-  def Description=(t)
-    @Description = t
-  end
-  def Description
-    @Description
+  def title
+    @title
   end
 
-  # Link
-  def Link=(t)
-    @Link = t
+  # description
+  def description=(t)
+    @description = t
   end
-  def Link
-    @Link
+  def description
+    @description
+  end
+
+  # link
+  def link=(t)
+    @link = t
+  end
+  def link
+    @link
   end
 
 
-  # GUID
-  def GUID=(t)
-    @GUID = t
+  # guid
+  def guid=(t)
+    @guid = t
   end
-  def GUID
-    @GUID
+  def guid
+    @guid
   end
 
-  # PubDate
-  def PubDate=(t)
-    @PubDate = t
+  # pubDate
+  def pubDate=(t)
+    @pubDate = t
   end
-  def PubDate
-    @PubDate
+  def pubDate
+    @pubDate
   end
 end
-
