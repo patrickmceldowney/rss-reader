@@ -13,6 +13,8 @@ class Application
     puts rssChannel.link
     puts rssChannel.pubDate
 
+    puts rssChannel.rssItems
+
     for index in 0..rssChannel.rssItems.length - 1 do
       puts rssChannel.resItems[index].title
       puts rssChannel.resItems[index].description[0..20]
