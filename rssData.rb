@@ -1,86 +1,16 @@
 # Create data models
 
 class RssChannel
-  # title
-  def title=(t)
-    @title = t
-  end
-  def title
-    @title
-  end
-
-  # description
-  def description=(t)
-    @description = t
-  end
-  def description
-    @description
-  end
-
-  # link
-  def link=(t)
-    @link = t
-  end
-  def link
-    @link
-  end
-
-  # pubDate
-  def pubDate=(t)
-    @pubDate = t
-  end
-  def pubDate
-    @pubDate
-  end
-
-  # RSSItems
-  def rssItems=(t)
-    @rssItems = t
-  end
-  def rssItems
-    @rssItems
-  end
+  attr_accessor :title
+  attr_accessor :description
+  attr_accessor :link
+  attr_accessor :pubDate
+  attr_accessor :rssItems
 end
-
 class RSSItems
-  # title
-  def title=(t)
-    @title = t
-  end
-  def title
-    @title
-  end
-
-  # description
-  def description=(t)
-    @description = t
-  end
-  def description
-    @description
-  end
-
-  # link
-  def link=(t)
-    @link = t
-  end
-  def link
-    @link
-  end
-
-
-  # guid
-  def guid=(t)
-    @guid = t
-  end
-  def guid
-    @guid
-  end
-
-  # pubDate
-  def pubDate=(t)
-    @pubDate = t
-  end
-  def pubDate
-    @pubDate
-  end
+  attr_accessor :title
+  attr_accessor :description
+  attr_accessor :link
+  attr_accessor :guid
+  attr_accessor :pubDate
 end
