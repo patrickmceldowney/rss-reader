@@ -2,7 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require_relative 'rssData.rb'
 
-class RssManager
+class RSSManager
   def load_rss_channel_from_url(rss_url)
     # Read RSS from URL
     xmlDoc = Nokogiri::XML(URI.open(rss_url))
@@ -11,7 +11,7 @@ class RssManager
     rssChannelNode = xmlDoc.root.at_xpath('channel')
 
     # Create new RSS channel
-    rssChannel = RssChannel.new
+    rssChannel = RSSChannel.new
     rssChannel.title = xmlDoc.root.at_xpath('channel/title').content
     rssChannel.description = rssChannelNode.at_xpath('description').content
     rssChannel.link = rssChannelNode.at_xpath('link').content
@@ -26,16 +26,17 @@ class RssManager
     xmlDoc = Nokogiri::XML(URI.open(rss_url))
 
     # Get XML Nodes
-    rssItemNodes = xmlDoc.root.at_xpath('channel/item')
+    rssItemNodes = xmlDoc.root.xpath('channel/item')
 
     # Store RSSitems temporarily
     rssItems = []
 
     rssItemNodes.each do |elem|
+      # puts elem
       # Create new RSSItem
-      rssItem = RssItem.new
+      rssItem = RSSItem.new
       rssItem.title = elem.at_xpath('title').content
-      rssItem.description = elem.at_xpath('description').content
+      # rssItem.description = elem.at_xpath('description').content
       rssItem.link = elem.at_xpath('link').content
       rssItem.guid = elem.at_xpath('guid').content
       rssItem.pubDate = elem.at_xpath('pubDate').content
